@@ -1,28 +1,61 @@
----
-name: skill-name
-description: >
-  One-sentence description of what this skill does
-  USE FOR: <primary use cases separated by semicolons>.
-  DO NOT USE FOR: <cases this skill should NOT handle>.
----
+# Inventory Management API
 
-# Skill Name
+Backend en FastAPI con arquitectura monolítica modular para inventario.
 
-## Purpose
+## Stack
 
-Describe the goal of this skill in 2–3 sentences. What problem does it solve? What domain does it cover?
+- FastAPI
+- SQLAlchemy
+- PostgreSQL
 
----
+## Estructura
 
-## When to Use This Skill
+```text
+app/
+  api/
+  core/
+  db/
+  modules/
+    companies/
+    users/
+db/
+  inventory-creation.sql
+```
 
-- <Trigger scenario 1>
-- <Trigger scenario 2>
-- <Trigger scenario 3>
+## Configuración
 
-## When NOT to Use This Skill
+1. Crear entorno virtual e instalar dependencias:
 
-- <Exclusion 1>
-- <Exclusion 2>
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+```
 
----
+2. Crear archivo `.env` desde `.env.example` y ajustar credenciales:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+3. Ejecutar script SQL en db local para crear la base de datos y tablas:
+
+- [db/inventory-creation.sql](C:/Users/josue/coding/inventory-management/db/inventory-creation.sql)
+
+## Ejecutar API
+
+```powershell
+uvicorn app.main:app --reload
+```
+
+Docs:
+
+- `http://127.0.0.1:8000/docs`
+
+## Endpoints base
+
+- `GET /health`
+- `GET /api/v1/companies`
+- `POST /api/v1/companies`
+- `GET /api/v1/users`
+- `POST /api/v1/users`
