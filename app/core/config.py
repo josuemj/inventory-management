@@ -13,6 +13,9 @@ class Settings(BaseSettings):
     db_user: str = "postgres"
     db_password: str = "postgres"
 
+    jwt_secret: str = "change-me-in-production"
+    jwt_expire_minutes: int = 60
+
     model_config = SettingsConfigDict(env_file=".env", case_sensitive=False)
 
     @property
